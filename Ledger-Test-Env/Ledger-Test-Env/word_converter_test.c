@@ -15,7 +15,7 @@ void print(char *chars) {
 void test_word_converter(int total) {
     for(int i=0; i < total; i++) {
         char chars[82] =
-    "WDIAJYSIPQNMMWMICWHAHMUGJTCCOJWHJLKPOULWTG9TZME9ZCVJNJWNTHESACLGXWPSKGYGVKKCXEBIM\0",
+    "UTVXGSTTZVZFROBJSGHDUZIPQEGXRNAEQPQHAKB9BTSLOJVFBVNWAMSNBXCZLJTHSCOVMPARZEXQJFEXQ\0",
         chars2[82];
         tryte_t trytes[81], trytes2[81];
         trit_t trits[243], trits2[243];
@@ -23,20 +23,22 @@ void test_word_converter(int total) {
         uint32_t words[12];
         chars[81] = '\0';
         chars2[81] = '\0';
-        
+
+        printf("Seed: ");
+        print(&chars[0]);
+        printf("\n");
+
         //generate random trits
         //gen_trits(&trits[0], 243);
+
         chars_to_trytes(&chars[0], &trytes[0], 81);
         trytes_to_trits(&trytes[0], &trits[0], 81);
-        
+
+        printf("Trits:\n");
         print_243trits(&trits[0]);
         trits_to_trytes(&trits[0], &trytes[0], 243);
         trytes_to_chars(&trytes[0], &chars[0], 81);
-        
-        //display the generated seed
-        printf("-------\n");
-        print(&chars[0]);
-        
+
         //convert
         specific_243trits_to_49trints(&trits[0], &trints[0]);
         trints_to_words_u_mem(&trints[0], &words[0]);
@@ -46,7 +48,7 @@ void test_word_converter(int total) {
         trits_to_trytes(&trits2[0], &trytes2[0], 243);
         trytes_to_chars(&trytes2[0], &chars2[0], 81);
         print_243trits(&trits2[0]);
-        
+
         //display converted seed
         print(&chars2[0]);
     }

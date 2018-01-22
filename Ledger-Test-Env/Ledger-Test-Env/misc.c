@@ -14,19 +14,19 @@ void gen_trits(int8_t *trits, int sz) {
     sleep(2);
     /* Intializes random number generator */
     srand((unsigned) time(&t));
-    
+
     for(int i=0; i<sz; i++) {
         int r = rand();      // returns a pseudo-random integer between 0 and RAND_MAX
         new_trits[i] = (r % 3) - 1;
     }
-    
+
     memcpy(trits, &new_trits[0], sz);
 }
 
 void print_243trits(int8_t *trits) {
     printf("---------------\n");
     for(uint8_t i = 0; i < 243; i++) {
-        printf("[%d] ", trits[i]);
+        printf("%d ", trits[i]);
     }
     printf("\n---------------\n");
 }
@@ -48,10 +48,10 @@ void print_bits(int8_t x) {
             x = x >>1;
         }
     }
-    
+
     for(int i=0; i<8; i++)
         printf("%d", ch_array[i]);
-    
+
     printf("\n");
 }
 
